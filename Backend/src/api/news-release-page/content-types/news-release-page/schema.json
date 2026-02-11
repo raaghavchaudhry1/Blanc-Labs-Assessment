@@ -1,0 +1,71 @@
+{
+  "kind": "singleType",
+  "collectionName": "news_release_pages",
+  "info": {
+    "singularName": "news-release-page",
+    "pluralName": "news-release-pages",
+    "displayName": "News Release Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageTitle": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "text"
+    },
+    "defaultLogo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "showLogos": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "Learn More",
+      "required": true
+    },
+    "ctaStyle": {
+      "type": "enumeration",
+      "required": true,
+      "default": "primary",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    },
+    "sortMode": {
+      "type": "enumeration",
+      "required": true,
+      "default": "publishDate_desc",
+      "enum": [
+        "publishDate_desc",
+        "publishDate_asc",
+        "manual_sortOrder_asc"
+      ]
+    },
+    "itemsPerPage": {
+      "type": "integer",
+      "required": true,
+      "default": 5
+    },
+    "news_releases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::news-release.news-release"
+    }
+  }
+}
