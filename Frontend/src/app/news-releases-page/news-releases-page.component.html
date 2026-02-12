@@ -1,0 +1,55 @@
+<section class="news-page">
+  <div class="page-shell">
+    <header class="page-header">
+      <p class="kicker">News</p>
+      <h1>{{ page()?.pageTitle || 'News Releases' }}</h1>
+      <p class="intro" *ngIf="page()?.intro">{{ page()?.intro }}</p>
+    </header>
+
+    <div class="state" *ngIf="loading()">Loading news releases...</div>
+    <div class="state error" *ngIf="!loading() && error()">{{ error() }}</div>
+
+    <div class="release-list" *ngIf="!loading() && !error()">
+      <article class="release-row" [class.no-logos]="!page()?.showLogos" *ngFor="let item of visibleItems(); trackBy: trackById">
+        <div class="logo-wrap" *ngIf="page()?.showLogos">
+          <ng-container *ngIf="item.logoUrl; else logoFallback">
+            <img class="logo" [src]="item.logoUrl" [alt]="item.title" />
+          </ng-container>
+          <ng-template #logoFallback>
+            <div class="logo-placeholder">Logo</div>
+          </ng-template>
+        </div>
+
+        <div class="content">
+          <h2>{{ item.title }}</h2>
+          <div class="date">{{ item.publishDate | date: 'MMMM d, yyyy' }}</div>
+
+          <a
+            class="cta"
+            [class.secondary]="page()?.ctaStyle === 'secondary'"
+            [attr.href]="item.externalUrl || '/news-releases'"
+            [attr.target]="item.externalUrl ? '_blank' : null"
+            [attr.rel]="item.externalUrl ? 'noopener noreferrer' : null"
+          >
+            {{ page()?.ctaLabel || 'Read More' }}
+          </a>
+        </div>
+      </article>
+
+      <div class="empty" *ngIf="visibleItems().length === 0">No news releases yet.</div>
+    </div>
+
+    <nav class="pagination" *ngIf="!loading() && !error() && totalPages() > 1">
+      <button class="page-btn" (click)="prevPage()" [disabled]="currentPage() === 1">Prev</button>
+      <button
+        class="page-btn"
+        *ngFor="let pageNumber of pageNumbers()"
+        (click)="setPage(pageNumber)"
+        [class.active]="pageNumber === currentPage()"
+      >
+        {{ pageNumber }}
+      </button>
+      <button class="page-btn" (click)="nextPage()" [disabled]="currentPage() === totalPages()">Next</button>
+    </nav>
+  </div>
+</section>
