@@ -43,15 +43,8 @@ Frontend highlights:
   - `npm install`
 
 ### 3) Configure environment
-Strapi uses `Backend/.env` for local dev.
-- If you are cloning this repo for the first time:
-  - Copy `.env.example` to `Backend/.env` if it does not already exist.
-  - Ensure it includes this line so the DB path is portable:
-    - `DATABASE_FILENAME=database-data/data.db`
+In this repo exisiting .env file is already provided.
 
-Notes:
-- `Backend/.env` includes secrets. Treat it as local-only for production.
-- The example env file is `.env.example` at the repo root.
 
 ### 4) Run the backend (Strapi)
 From `Backend/`:
@@ -60,6 +53,10 @@ From `Backend/`:
 Strapi will be available at:
 - Admin UI: `http://localhost:1337/admin`
 - API: `http://localhost:1337/api`
+
+Login Credentials for Admin UI for Strapi
+- email: raaghavc@gmail.com
+- API: Blanclabs1
 
 ### 5) Run the frontend (Angular)
 From `Frontend/`:
@@ -92,7 +89,7 @@ For nested data and logos:
 
 ### Database
 - SQLite file is configured in `Backend/config/database.ts`.
-- The local DB file path is set by `DATABASE_FILENAME` in `Backend/.env`.
+- The local DB file path is set by `DATABASE_FILENAME` in `.env`.
 - Default path used here: `Backend/database-data/data.db`.
 
 ### Media
@@ -127,7 +124,7 @@ For nested data and logos:
 ### Design
 - Typography and color styling are in `Frontend/src/styles.css`.
 - Layout and spacing are in `Frontend/src/app/news-releases-page/news-releases-page.component.css`.
-- The layout matches the provided screenshot: centered header, left-aligned logos, right-aligned content, green pill CTA.
+
 
 ## End-to-End Flow (Full Logic Map)
 1. User navigates to `http://localhost:4200/news-releases`.
@@ -139,13 +136,3 @@ For nested data and logos:
 7. Component sorts items based on `sortMode` and slices them for pagination.
 8. Template renders header, list rows, CTAs, and pagination controls.
 
-## Troubleshooting
-- If the frontend is stuck on "Loading...":
-  - Ensure Strapi is running.
-  - Confirm the API URL returns data in the browser.
-  - Check the browser Console for errors.
-
-## Notes on Sharing the Repo
-- Committing `Backend/.env` makes setup easy, but it exposes secrets.
-- For public repos, prefer using `.env.example` and documenting setup steps.
-- If you want media logos to appear, ensure `Backend/public/uploads/` is included in the repo.
