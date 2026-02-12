@@ -1,5 +1,7 @@
 # Blanc Labs Assessment – Strapi + Angular News Releases
 
+![Site Screenshot](site_image.png)
+
 ## Overview
 This repo contains a Strapi backend and an Angular frontend that renders a News Releases page. The backend provides a single "News Release Page" config plus a collection of "News Release" items. The frontend fetches that data, sorts it, paginates it, and renders the list to match the provided design.
 
@@ -134,4 +136,3 @@ For nested data and logos:
 6. Service normalizes the response shape.
 7. Component sorts items based on `sortMode` and slices them for pagination.
 8. Template renders header, list rows, CTAs, and pagination controls.
-
