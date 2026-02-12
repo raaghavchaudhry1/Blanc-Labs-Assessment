@@ -11,7 +11,6 @@ This repo contains a Strapi backend and an Angular frontend that renders a News 
 Top-level:
 - `Backend/` Strapi app
 - `Frontend/` Angular app
-- `.env.example` example env values for Strapi
 - `.gitignore`
 
 Backend highlights:
