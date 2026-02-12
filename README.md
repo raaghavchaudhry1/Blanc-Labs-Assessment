@@ -56,7 +56,7 @@ Strapi will be available at:
 
 Login Credentials for Admin UI for Strapi
 - email: raaghavc@gmail.com
-- API: Blanclabs1
+- password: Blanclabs1
 
 ### 5) Run the frontend (Angular)
 From `Frontend/`:
@@ -106,8 +106,8 @@ For nested data and logos:
 
 ### Data Fetching
 - Service: `Frontend/src/app/news-releases-page/news-release.service.ts`.
-- Calls: `http://localhost:1337/api/news-release-page?populate[news_releases][populate]=logo&populate=defaultLogo`.
-- Normalizes response so it works with Strapi v4/v5 shapes.
+- Calls the following API which automatically populates relational data and image data for News Release page: `http://localhost:1337/api/news-release-page?populate[news_releases][populate]=logo&populate=defaultLogo`.
+
 
 ### Sorting + Pagination
 - Sorting logic is controlled by `sortMode`:
